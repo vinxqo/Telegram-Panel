@@ -306,7 +306,7 @@ public static class PersistentStorageBootstrapper
             yield return contentRoot;
             yield return writableRoot;
 
-            if (DirectoryExistsStrict("/app"))
+            if (!OperatingSystem.IsWindows() && DirectoryExistsStrict("/app"))
                 yield return "/app";
 
             var parent = Directory.GetParent(Path.GetFullPath(contentRoot))?.FullName;
